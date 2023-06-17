@@ -13,6 +13,42 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v2
 
+            - name: Labels CleanUp
+              uses: actions/github-script@v6
+              with:
+                  script: |
+                      const labelsToDeleteEnglish = [
+                        'docment',
+                        'bag',
+                        'request',
+                        'rejection',
+                        'feature',
+                        'warning',
+                        'invalid',
+                        'question',
+                        'duplication'
+                      ];
+
+                      for (const label of labelsToDeleteEnglish) {
+                        const existingLabel = await github.rest.issues.getLabel({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          name: label
+                        }).catch(() => null);
+
+                        if (existingLabel) {
+                          console.log(`Label "${label}" already exists. deleting...`);
+                          await github.rest.issues.deleteLabel({
+                            owner: context.repo.owner,
+                            repo: context.repo.repo,
+                            name: label,
+                          });
+                          continue;
+                        }
+
+                        console.log(`Label "${label}" does not exist. Skiping...`);
+                      }
+
             - name: Create and Update labels With English
               uses: actions/github-script@v6
               with:
@@ -37,15 +73,7 @@ jobs:
                         }).catch(() => null);
 
                         if (existingLabel) {
-                          console.log(`Label "${label.name}" already exists. Updating...`);
-                          await github.rest.issues.updateLabel({
-                            owner: context.repo.owner,
-                            repo: context.repo.repo,
-                            current_name: label.name,
-                            name: label.name,
-                            color: label.color,
-                            description: label.description
-                          });
+                          console.log(`Label "${label.name}" already exists. Skiping...`);
                           continue;
                         }
 
@@ -83,15 +111,7 @@ jobs:
                         }).catch(() => null);
 
                         if (existingLabel) {
-                          console.log(`既に"${label.name}"が作成されています！内容に差異がある場合はデータを更新します...`);
-                          await github.rest.issues.updateLabel({
-                            owner: context.repo.owner,
-                            repo: context.repo.repo,
-                            current_name: label.name,
-                            name: label.name,
-                            color: label.color,
-                            description: label.description
-                          });
+                          console.log(`既に"${label.name}"が存在する為、スキップします...`);
                           continue;
                         }
 
