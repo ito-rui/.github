@@ -14,12 +14,9 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Create labels With English
-              uses: actions/github-script@v5
+              uses: actions/github-script@v6
               with:
                   script: |
-                      const { Octokit } = require('@octokit/rest');
-                      const octokit = new Octokit({ auth: ${{ secrets.GITHUB_TOKEN }} });
-
                       const labels = [
                         { name: 'Docment', color: '#2196f3', description: 'Used to create, update and delete documents' },
                         { name: 'Bag', color: '#f44336', description: 'Contents related to bugs' },
@@ -33,7 +30,7 @@ jobs:
                       ];
 
                       for (const label of labels) {
-                        octokit.issues.createLabel({
+                        github.rest.issues.createLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name,

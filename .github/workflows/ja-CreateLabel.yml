@@ -14,12 +14,9 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Create labels With Japanese
-              uses: actions/github-script@v5
+              uses: actions/github-script@v6
               with:
                   script: |
-                      const { Octokit } = require('@octokit/rest');
-                      const octokit = new Octokit({ auth: ${{ secrets.GITHUB_TOKEN }} });
-
                       const labels = [
                         { name: 'ドキュメント', color: '#2196f3', description: 'ドキュメントに関する内容' },
                         { name: 'バグ', color: '#f44336', description: 'バグに関する内容' },
@@ -33,7 +30,7 @@ jobs:
                       ];
 
                       for (const label of labels) {
-                        octokit.issues.createLabel({
+                        github.rest.issues.createLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name,
