@@ -1,4 +1,4 @@
-name: Create Labels With Japanese
+name: Create Labels
 
 on:
     push:
