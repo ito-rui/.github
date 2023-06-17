@@ -12,6 +12,7 @@
 ## Related Issue or PullRequest or Projects（関連する Issue や PullRequest、Projects）
 
 <!-- You will be able to see the progress of this Pull request -->
+<!-- このPullリクエストの進捗を確認することができます -->
 
 ## ＊ What has been done（行った事）
 
