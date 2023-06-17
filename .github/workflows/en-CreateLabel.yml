@@ -18,15 +18,15 @@ jobs:
               with:
                   script: |
                       const labels = [
-                        { name: 'Docment', color: '#2196f3', description: 'Used to create, update and delete documents' },
-                        { name: 'Bag', color: '#f44336', description: 'Contents related to bugs' },
-                        { name: 'Request', color: '#03a9f4', description: 'Request new features and improvements' },
-                        { name: 'Rejection', color: '#FFFFFF', description: 'Reject the contents of the Issues' },
-                        { name: 'Feature', color: '#4caf50', description: 'Contents about new features' },
-                        { name: 'Warning', color: '#ffeb3b', description: 'Content related to precautions' },
-                        { name: 'Invalid', color: '#8bc34a', description: 'Invalid pull request or Issues content' },
-                        { name: 'Question', color: '#9c27b0', description: 'Questions about specifications and features' },
-                        { name: 'Duplication', color: '#9e9e9e', description: 'Duplication of Issues content' }
+                        { name: 'Docment', color: '2196f3', description: 'Used to create, update and delete documents' },
+                        { name: 'Bag', color: 'f44336', description: 'Contents related to bugs' },
+                        { name: 'Request', color: '03a9f4', description: 'Request new features and improvements' },
+                        { name: 'Rejection', color: 'FFFFFF', description: 'Reject the contents of the Issues' },
+                        { name: 'Feature', color: '4caf50', description: 'Contents about new features' },
+                        { name: 'Warning', color: 'ffeb3b', description: 'Content related to precautions' },
+                        { name: 'Invalid', color: '8bc34a', description: 'Invalid pull request or Issues content' },
+                        { name: 'Question', color: '9c27b0', description: 'Questions about specifications and features' },
+                        { name: 'Duplication', color: '9e9e9e', description: 'Duplication of Issues content' }
                       ];
 
                       for (const label of labels) {
