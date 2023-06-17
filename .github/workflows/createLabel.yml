@@ -3,7 +3,7 @@ name: Create Labels With Japanese
 on:
     push:
         branches:
-            - depelop
+            - develop
 
 jobs:
     create-labels:
@@ -13,11 +13,11 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v2
 
-            - name: Create labels and Update With English
+            - name: Create and Update labels With English
               uses: actions/github-script@v6
               with:
                   script: |
-                      const labels = [
+                      const labelsToUpdateEnglish = [
                         { name: 'Docment', color: '2196f3', description: 'Used to create, update and delete documents' },
                         { name: 'Bag', color: 'f44336', description: 'Contents related to bugs' },
                         { name: 'Request', color: '03a9f4', description: 'Request new features and improvements' },
@@ -29,15 +29,15 @@ jobs:
                         { name: 'Duplication', color: '9e9e9e', description: 'Duplication of Issues content' }
                       ];
 
-                      for (const label of labels) {
+                      for (const label of labelsToUpdateEnglish) {
                         const existingLabel = await github.rest.issues.getLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name
                         }).catch(() => null);
-                        
+
                         if (existingLabel) {
-                          console.log(`Label "${label.name}" already exists. Updating...);
+                          console.log(`Label "${label.name}" already exists. Updating...`);
                           await github.rest.issues.updateLabel({
                             owner: context.repo.owner,
                             repo: context.repo.repo,
@@ -48,8 +48,9 @@ jobs:
                           });
                           continue;
                         }
-                        
-                        github.rest.issues.createLabel({
+
+                        console.log(`Label "${label.name}" does not exist. Creating...`);
+                        await github.rest.issues.createLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name,
@@ -62,7 +63,7 @@ jobs:
               uses: actions/github-script@v6
               with:
                   script: |
-                      const labels = [
+                      const labelsToUpdateJapanese = [
                         { name: 'ドキュメント', color: '2196f3', description: 'ドキュメントに関する内容' },
                         { name: 'バグ', color: 'f44336', description: 'バグに関する内容' },
                         { name: 'リクエスト', color: '03a9f4', description: '要望に関する内容' },
@@ -74,13 +75,13 @@ jobs:
                         { name: '重複', color: '9e9e9e', description: 'Issuesの内容が重複している場合' }
                       ];
 
-                      for (const label of labels) {
+                      for (const label of labelsToUpdateJapanese) {
                         const existingLabel = await github.rest.issues.getLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name
                         }).catch(() => null);
-                        
+
                         if (existingLabel) {
                           console.log(`既に"${label.name}"が作成されています！内容に差異がある場合はデータを更新します...`);
                           await github.rest.issues.updateLabel({
@@ -93,8 +94,9 @@ jobs:
                           });
                           continue;
                         }
-                        
-                        github.rest.issues.createLabel({
+
+                        console.log(`"${label.name}"を作成します...`);
+                        await github.rest.issues.createLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name,
