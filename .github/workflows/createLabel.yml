@@ -3,7 +3,7 @@ name: Create Labels
 on:
     push:
         branches:
-            - develop
+            - main
 
 jobs:
     create-labels:
