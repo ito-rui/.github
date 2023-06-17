@@ -13,6 +13,30 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v2
 
+            - name: Delete labels
+              uses: actions/github-script@v6
+              with:
+                  script: |
+                      const labelsToDelete = [
+                        'docment',
+                        'bag',
+                        'request',
+                        'rejection',
+                        'feature',
+                        'warning',
+                        'invalid',
+                        'question',
+                        'duplication'
+                      ];
+
+                      for (const labelName of labelsToDelete) {
+                        github.rest.issues.deleteLabel({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          name: labelName
+                        });
+                      }
+
             - name: Create labels With English
               uses: actions/github-script@v6
               with:
