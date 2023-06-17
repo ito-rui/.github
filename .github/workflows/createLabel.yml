@@ -18,15 +18,17 @@ jobs:
               with:
                   script: |
                       const labelsToDeleteEnglish = [
-                        'docment',
-                        'bag',
+                        'documentation',
+                        'bug',
                         'request',
                         'rejection',
                         'feature',
                         'warning',
                         'invalid',
                         'question',
-                        'duplication'
+                        'duplicate',
+                        'enhancement',
+                        'good first issue'
                       ];
 
                       for (const label of labelsToDeleteEnglish) {
@@ -55,7 +57,7 @@ jobs:
                   script: |
                       const labelsToUpdateEnglish = [
                         { name: 'Docment', color: '2196f3', description: 'Used to create, update and delete documents' },
-                        { name: 'Bag', color: 'f44336', description: 'Contents related to bugs' },
+                        { name: 'Bug', color: 'f44336', description: 'Contents related to bugs' },
                         { name: 'Request', color: '03a9f4', description: 'Request new features and improvements' },
                         { name: 'Rejection', color: 'FFFFFF', description: 'Reject the contents of the Issues' },
                         { name: 'Feature', color: '4caf50', description: 'Contents about new features' },
