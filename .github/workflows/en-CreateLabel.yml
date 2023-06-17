@@ -3,7 +3,7 @@ name: Create Labels With English
 on:
     push:
         branches:
-            - depelop
+            - develop
 
 jobs:
     create-labels:
@@ -29,15 +29,15 @@ jobs:
                         { name: 'Warning', color: '#ffeb3b', description: 'Content related to precautions' },
                         { name: 'Invalid', color: '#8bc34a', description: 'Invalid pull request or Issues content' },
                         { name: 'Question', color: '#9c27b0', description: 'Questions about specifications and features' },
-                        { name: 'Duplication', color: '#9e9e9e', description: 'Duplication of Issues content' },
+                        { name: 'Duplication', color: '#9e9e9e', description: 'Duplication of Issues content' }
                       ];
 
                       for (const label of labels) {
-                        octokit.issues.createLabel({
+                        octokit.rest.issues.createLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name,
-                          color: label.color
+                          color: label.color,
                           description: label.description
                         });
                       }

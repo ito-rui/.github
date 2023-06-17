@@ -29,15 +29,15 @@ jobs:
                         { name: '注意', color: '#ffeb3b', description: '注意に関する内容' },
                         { name: '無効', color: '#8bc34a', description: 'Issuesが無効な内容' },
                         { name: '質問', color: '#9c27b0', description: '質問の関する内容' },
-                        { name: '重複', color: '#9e9e9e', description: 'Issuesの内容が重複している場合' },
+                        { name: '重複', color: '#9e9e9e', description: 'Issuesの内容が重複している場合' }
                       ];
 
                       for (const label of labels) {
-                        octokit.issues.createLabel({
+                        octokit.rest.issues.createLabel({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           name: label.name,
-                          color: label.color
+                          color: label.color,
                           description: label.description
                         });
                       }
