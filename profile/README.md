@@ -2,15 +2,15 @@
 
 ### Branch
 
--   #### [Rules](docs/Branch-Rules.pdf)
+-   #### [Rules](../docs/Branch-Rules.pdf)
 
 ### Issues
 
--   #### [Rules](docs/Issues-Rules.pdf)
+-   #### [Rules](../docs/Issues-Rules.pdf)
 
 ### Commit
 
--   #### [Rules](docs/Commit-Rules.pdf)
+-   #### [Rules](../docs/Commit-Rules.pdf)
 
 #### Syntax
 
