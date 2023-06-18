@@ -11,7 +11,7 @@ labels: "Bug"
 <!-- If the following boxes are not ALL checked, your issue is likely to be closed -->
 
 -   [ ] Using npm
--   [ ] Using an up-to-date [`main` branch]
+-   [ ] Using an up-to-date [`develop` branch]
 
 <!-- Add a task here
 -   [ ] Description.

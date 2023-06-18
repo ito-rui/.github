@@ -10,8 +10,8 @@ labels: "バグ"
 
 <!-- 下記のチェックが埋まってない場合、Issuesが閉じられる可能性があります。 -->
 
--   [ ] Using npm
--   [ ] Using an up-to-date [`main` branch]
+-   [ ] npm のパッケージマネージャを使用している事
+-   [ ] このプロジェクトの最新版を使用している事 [`develop` branch]
 
 <!-- 追加のタスク
 -   [ ] Description.
